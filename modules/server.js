@@ -9,8 +9,8 @@ function start() {
     console.log("Zapytanie " + request.url + " odebrane.");
 
     response.writeHead(200, {"Content-Type": "text/plain; charset=utf-8"});
-
-    switch (request.url) {
+    console.log(handlers)
+    switch (responsquest.url) {
 	case '/':
 	case '/start':
     	handlers.welcome(request, response);
