@@ -1,5 +1,5 @@
-
 var formidable = require('formidable');
+var fs = require('fs');
 
 exports.upload = function(request, response) {
     console.log("Rozpoczynam obsługę żądania upload.");
@@ -12,8 +12,6 @@ exports.upload = function(request, response) {
         response.end();
     });
 }
-
-var fs = require('fs');
 
 exports.welcome = function(request, response) {
     console.log("Rozpoczynam obsługę żądania welcome.");
@@ -28,4 +26,12 @@ exports.error = function(request, response) {
     console.log("Nie wiem co robić.");
     response.write("404 :(");
     response.end();
+}
+
+exports.show = function(request, response) {
+    fs.readFile("test.png", "binary", function(error, file) {
+        response.writeHead(200, {"Content-Type": "image/png"});
+        response.write(file, "binary");
+        response.end();
+    });
 }
